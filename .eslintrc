@@ -1,0 +1,25 @@
+{
+      "env": {
+            "browser": true,
+            "es2020": true
+      },
+      "extends": [
+            "react-app",
+            "airbnb-base"
+      ],
+      "parserOptions": {
+            "ecmaVersion": 11,
+            "sourceType": "module"
+      },
+      "rules": {
+            "no-console": "off",
+            "indent": [
+                  "error", 4
+            ],
+            "no-multiple-empty-lines": [
+                  "error", {
+                        "max": 2, "maxEOF": 0
+                  }
+            ]
+      }
+}

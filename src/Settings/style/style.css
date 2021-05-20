@@ -1,0 +1,14 @@
+.settings-row {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.settings-row .settings-menu-col .settings-menu {
+  height: 100%;
+}
+
+.settings-row .settings-content-col {
+  padding: 0 48px;
+}
+/*# sourceMappingURL=style.css.map */

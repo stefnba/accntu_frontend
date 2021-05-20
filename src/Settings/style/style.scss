@@ -1,0 +1,15 @@
+
+
+.settings-row {
+    flex: 1;
+
+    .settings-menu-col {
+        .settings-menu {
+            height: 100%;
+        }
+    }
+    
+    .settings-content-col {
+        padding: 0 48px;
+    }
+}

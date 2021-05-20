@@ -1,0 +1,16 @@
+.global-modal-footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: auto;
+  margin-left: -24px;
+  margin-right: -24px;
+  margin-bottom: -24px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 10px 16px;
+  border-top: 1px solid #f0f0f0;
+  border-radius: 0 0 2px 2px;
+}
+/*# sourceMappingURL=style.css.map */
