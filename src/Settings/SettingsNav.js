@@ -22,13 +22,13 @@ export default function SettingsNav() {
             <Menu.ItemGroup key="user-settings" title="User Account">
                 <Menu.Item key="/settings/user">
                     <NavLink exact to="/settings/user">
-                Profile
+                        Profile
                     </NavLink>
                 </Menu.Item>
 
                 <Menu.Item key="/settings/security">
                     <NavLink exact to="/settings/security">
-                Security
+                        Security
                     </NavLink>
                 </Menu.Item>
             </Menu.ItemGroup>

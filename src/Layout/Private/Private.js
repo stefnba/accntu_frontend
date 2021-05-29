@@ -1,5 +1,9 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { useSelector } from 'react-redux';
+import {
+    Layout,
+    PageHeader,
+} from 'antd';
 
 import {
     PrivateFooter,
@@ -15,10 +19,13 @@ export default function PrivateLayout({
     component: Component,
     breadcrumbs,
     title,
+    titleReduxPath = '',
     hasPageHeader,
     pageHeaderExtra: ExtraNav,
     ...rest
 }) {
+    const titleRedux = useSelector((state) => titleReduxPath.split('.').reduce((p, prop) => (p[prop]), state));
+
     return (
         <Layout style={{ minHeight: '100vh' }}>
             <Layout>
@@ -27,6 +34,15 @@ export default function PrivateLayout({
 
                 {/* Main */}
                 <Content className="content-container">
+                    {
+                        hasPageHeader
+                            && <PageHeader
+                                breadcrumb={{ routes: breadcrumbs }}
+                                className="page-title"
+                                title={title || titleRedux || null}
+                                extra={ExtraNav ? <ExtraNav /> : null}
+                            />
+                    }
                     <Component {...rest} />
                 </Content>
 

@@ -7,6 +7,9 @@ import {
 } from '../Auth';
 import { Home, HomePublic } from '../Home';
 import { SettingsCenter } from '../Settings';
+import { Transaction } from '../Transaction';
+import { Importing } from '../Import';
+import { Budget } from '../Budget';
 import { UserProfile } from '../Settings/User';
 import { SecurityCenter } from '../Settings/Security';
 
@@ -22,6 +25,44 @@ const routes = [
         breadcrumbs: [
             { breadcrumbName: 'Home', path: '/' },
             { breadcrumbName: 'Dashboard', path: '/dashboard' },
+        ],
+    },
+    {
+        title: 'Transactions',
+        path: ['/transactions'],
+        exact: true,
+        component: Transaction,
+        isPrivate: true,
+        hasPageHeader: true,
+        // pageHeaderExtra: TableActionNav,
+        breadcrumbs: [
+            { breadcrumbName: 'Home', path: '/' },
+            { breadcrumbName: 'Transactions', path: '/transactions' },
+        ],
+    },
+    {
+        title: 'Import new Transactions',
+        path: ['/import'],
+        exact: true,
+        component: Importing,
+        isPrivate: true,
+        hasPageHeader: true,
+        // pageHeaderExtra: TableActionNav,
+        breadcrumbs: [
+            { breadcrumbName: 'Home', path: '/' },
+            { breadcrumbName: 'Transactions', path: '/import' },
+        ],
+    },
+    {
+        title: 'Budget',
+        path: ['/budget'],
+        exact: true,
+        component: Budget,
+        isPrivate: true,
+        hasPageHeader: true,
+        breadcrumbs: [
+            { breadcrumbName: 'Home', path: '/' },
+            { breadcrumbName: 'Budget', path: '/budget' },
         ],
     },
     {

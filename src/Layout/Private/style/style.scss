@@ -1,6 +1,68 @@
 
+.global-header {
+    .ant-menu {
+        background: transparent;
+
+        .nav-logout {
+            a > span {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .ant-menu-horizontal {
+        border-bottom: 0px;
+    }
+}
+
+
 .content-container {
-    background-color: #fff;
-    display: flex;
-    margin-top: 80px;
+    max-width: 1920px;
+    margin: 110px auto 0;
+    width: 100%;
+    padding: 0 44px;
+
+    .ant-page-header {
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 32px;
+    }
+
+    .page-title {
+        // background-color: transparent !important;
+    
+        .ant-page-header-heading-title {
+            font-size: 32px;
+            line-height: 40px;
+        }
+    }
+
+    .page-container {
+        background-color: #ffffff;
+        border-radius: 2px;
+        padding: 8px;
+    }
+
+    .page-container.transparent {
+        background-color: transparent;
+    }
+
+    .page-container.no-gap {
+        border-radius: 0px;
+        padding: 0px;
+    }
+
+    .page-container.extra-gap {
+        padding: 24px;
+    }
+}
+
+.logo {
+    // height: 32px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    background: url('../media/logo_icon_alt.png') no-repeat center;
+    background-size: auto 36px;
+    grid-area: app-logo;
+    width: 100px;
 }

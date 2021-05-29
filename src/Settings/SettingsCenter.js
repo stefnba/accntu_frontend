@@ -14,7 +14,7 @@ import './style/style.css';
 
 export default function SettingsCenter({ subRoutes }) {
     return (
-        <Row className="settings-row">
+        <Row className="settings-row page-container">
             <Col span={6} className="settings-menu-col">
                 <SettingsNav />
             </Col>

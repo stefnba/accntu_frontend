@@ -1,71 +1,97 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, Link } from 'react-router-dom';
 import {
     Layout,
-    Dropdown,
-    Avatar,
+    Tooltip,
     Menu,
 } from 'antd';
 import {
     LogoutOutlined,
+    ImportOutlined,
+    PieChartOutlined,
+    ShoppingCartOutlined,
+    UnorderedListOutlined,
     UserOutlined,
 } from '@ant-design/icons';
 
 const { Header } = Layout;
 
-const menu = (user) => (
-    <Menu
-        style={{ width: 200 }}
-    >
-        <Menu.ItemGroup title={user}>
-            <Menu.Divider />
-            <Menu.Item
-                icon={<UserOutlined />}
-                key="status-update-transfer"
-            >
-                <NavLink exact to="/settings/user">
-                    Account Settings
-                </NavLink>
-            </Menu.Item>
-            <Menu.Item
-                icon={<LogoutOutlined />}
-                key="logout"
-            >
-                <NavLink exact to="/logout">
-                    Logout
-                </NavLink>
-            </Menu.Item>
-        </Menu.ItemGroup>
-    </Menu>
-);
 
 export default function PrivateNav() {
     const {
         last_name: last,
         first_name: first,
     } = useSelector((state) => state.user.userInfo.data || {});
+    const location = useLocation();
+    const paths = location.pathname.match(/\/\w+/g) || ['/'];
     const user = `${first} ${last}`;
     return (
         <Header className="global-header"
             style={
                 {
-                    background: '#fff',
-                    padding: 0,
-                    textAlign: 'right',
-                    paddingRight: 24,
+                    background: '#f0f2f5',
                     zIndex: 1,
                     position: 'fixed',
                     top: '0',
-                    // width: '100%',
                     left: 0,
                     right: 0,
+                    display: 'flex',
                 }
             }
         >
-            <Dropdown overlay={menu(user)}>
+            <Link to="/" className="logo" />
+            <Menu
+                style={{ marginLeft: 'auto' }}
+                selectedKeys={paths}
+                // selectedKeys={['/user', '/transactions']}
+                // defaultOpenKeys={upperPath}
+                // defaultSelectedKeys={['/']}
+                // mode="inline"
+                mode="horizontal"
+            >
+                <Menu.Item key="/">
+                    <NavLink exact to="/">
+                        <PieChartOutlined />
+                        <span>Home</span>
+                    </NavLink>
+                </Menu.Item>
+                <Menu.Item key="/import">
+                    <NavLink exact to="/import">
+                        <ImportOutlined />
+                        <span>Import</span>
+                    </NavLink>
+                </Menu.Item>
+                <Menu.Item key="/transactions">
+                    <NavLink exact to="/transactions">
+                        <UnorderedListOutlined />
+                        <span>Transactions</span>
+                    </NavLink>
+                </Menu.Item>
+                <Menu.Item key="/budget">
+                    <NavLink exact to="/budget">
+                        <ShoppingCartOutlined />
+                        <span>Budget</span>
+                    </NavLink>
+                </Menu.Item>
+                <Menu.Item key="/settings">
+                    <NavLink to="/settings/user">
+                        <UserOutlined />
+                        <span>{user}</span>
+                    </NavLink>
+                </Menu.Item>
+                <Menu.Item className="nav-logout" key="/logout">
+                    <Tooltip title="Logout">
+                        <NavLink to="/logout">
+                            <LogoutOutlined />
+                            {/* <span>Logout</span> */}
+                        </NavLink>
+                    </Tooltip>
+                </Menu.Item>
+            </Menu>
+            {/* <Dropdown overlay={menu(user)}>
                 <Avatar icon={<UserOutlined />} />
-            </Dropdown>
+            </Dropdown> */}
         </Header>
     );
 }
