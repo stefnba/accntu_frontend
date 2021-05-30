@@ -21,21 +21,21 @@ export default function UploadSelectionForm() {
     const [importFiles, setImportFiles] = useState({});
 
     // store
-    // const { files } = useSelector((store) => store.importing.upload);
+    const { files, uploadKey } = useSelector((store) => store.importing.upload);
     const { data: uploadAccount } = useSelector((store) => store.importing.accounts);
 
-    const files = [
-        {
-            key: 'jX71mhZwNZvtxLLwVwfk4iPIlbxwOcDJ_H3AIgcriVXMbwzKb__.fZsT1TELVz7u',
-            name: '5310________7734.csv',
-            extension: 'csv',
-        },
-        {
-            key: 'RD2ph7AF.rW~ewJAMVVH5Nmhdd~Jo4ox-xkQfU-c_mFvPt6ZonIFsbVc~heoTIeM',
-            name: '5310________7734.csv',
-            extension: 'csv',
-        },
-    ];
+    // const files = [
+    //     {
+    //         key: 'jX71mhZwNZvtxLLwVwfk4iPIlbxwOcDJ_H3AIgcriVXMbwzKb__.fZsT1TELVz7u',
+    //         name: '5310________7734.csv',
+    //         extension: 'csv',
+    //     },
+    //     {
+    //         key: 'RD2ph7AF.rW~ewJAMVVH5Nmhdd~Jo4ox-xkQfU-c_mFvPt6ZonIFsbVc~heoTIeM',
+    //         name: '5310________7734.csv',
+    //         extension: 'csv',
+    //     },
+    // ];
 
     // lifecycle
     useEffect(() => {
@@ -73,7 +73,7 @@ export default function UploadSelectionForm() {
 
     const handleImport = () => {
         delete importFiles[undefined];
-        dispatch(uploadActions.newImportFromUpload(importFiles));
+        dispatch(uploadActions.newImportFromUpload(importFiles, uploadKey));
     };
 
 

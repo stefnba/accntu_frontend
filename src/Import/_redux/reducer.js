@@ -3,9 +3,10 @@ import { uploadConstants } from '../Upload/_redux';
 
 const initialState = {
     upload: {
-        step: 1,
+        step: 0,
         requesting: false,
         files: [],
+        uploadKey: null,
     },
     accounts: {
         requesting: false,
@@ -31,7 +32,8 @@ function importing(state = initialState, action) {
                 ...state.upload,
                 requesting: false,
                 step: 1,
-                files: action.data,
+                files: action.data.files,
+                uploadKey: action.data.key,
             },
         };
     case uploadConstants.UPLOAD_FILES.FAILURE:

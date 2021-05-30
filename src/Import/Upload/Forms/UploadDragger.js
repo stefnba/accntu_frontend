@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     Upload,
@@ -21,18 +21,11 @@ export default function UploadDraggerForm() {
 
     // state
     const [uploadFiles, setUploadFile] = useState([]);
-    const [uploadId, setUploadId] = useState(null);
-
-    useEffect(() => {
-        dispatch(uploadActions.newUpload())
-            .then(({ data }) => setUploadId(data.upload_key))
-            .catch((error) => console.log(error));
-    }, [dispatch]);
 
 
     // actions
     const handleSetFile = (file) => {
-        console.log(uploadId, file);
+        // console.log(uploadId, file);
         setUploadFile([...uploadFiles, file]);
         return false;
     };
@@ -48,7 +41,7 @@ export default function UploadDraggerForm() {
         uploadFiles.forEach((file) => {
             formData.append('files[]', file);
         });
-        formData.append('upload_key', uploadId);
+        // formData.append('upload_key', uploadId);
 
         // upload
         dispatch(uploadActions.uploadFiles(formData));

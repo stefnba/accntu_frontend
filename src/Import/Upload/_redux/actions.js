@@ -18,27 +18,16 @@ function uploadFiles(data) {
 /**
  * get transactions list
  */
-function newUpload() {
-    return {
-        type: uploadConstants.NEW_UPLOAD.REQUEST,
-        httpRequest: {
-            method: 'POST',
-            url: '/import/upload/new',
-        },
-    };
-}
-
-
-/**
- * get transactions list
- */
-function newImportFromUpload(data) {
+function newImportFromUpload(files, uploadKey) {
     return {
         type: uploadConstants.NEW_IMPORT_FROM_UPLOAD.REQUEST,
         httpRequest: {
             method: 'POST',
             url: '/import/new/upload',
-            data,
+            data: {
+                files,
+                key: uploadKey,
+            },
         },
     };
 }
@@ -59,7 +48,6 @@ function fetchUploadAccounts() {
 
 const uploadActions = {
     uploadFiles,
-    newUpload,
     fetchUploadAccounts,
     newImportFromUpload,
 };
